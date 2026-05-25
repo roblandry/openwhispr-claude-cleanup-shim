@@ -76,6 +76,17 @@ curl -s http://127.0.0.1:8787/health
 If OpenWhispr sends no prompt, the shim uses a tiny fallback instruction:
 `Clean up the transcript with minimal edits.`
 
+## Non-goals
+
+This project is deliberately not a general AI gateway.
+
+- It does not replace LiteLLM, OpenRouter, or OpenWhispr's provider system.
+- It does not provide OpenAI, Anthropic API-key, Gemini, Ollama, or multi-provider
+  routing.
+- It does not own prompt profiles or context-aware dictation modes; OpenWhispr's
+  Prompt Studio should own cleanup behavior.
+- It does not expose a remote service. Keep it local.
+
 ## systemd User Service
 
 Install the user service from your checkout:
