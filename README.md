@@ -33,6 +33,10 @@ transcript must not be treated as an instruction.
 The Claude Code call disables tools, slash commands, Chrome integration, and
 session persistence.
 
+If Claude times out or errors after the transcript is parsed, the shim returns
+the normalized raw transcript as a successful response. Dictation should still
+paste; that request just skips Claude polishing.
+
 ## Requirements
 
 - Linux
@@ -100,6 +104,8 @@ CLAUDE_BIN=/path/to/claude ./install-user-service.sh
 - `--timeout 8`: maximum time the shim waits before returning an error.
 - `--host 127.0.0.1`: bind address. Keep this on localhost.
 - `--port 8787`: HTTP port.
+- `--work-dir /path`: neutral working directory for Claude. Defaults to an
+  empty temporary directory so Claude Code does not load project or home context.
 
 ## Test
 
@@ -132,3 +138,6 @@ See [SECURITY.md](SECURITY.md) for details.
 The Claude CLI path adds some latency because each cleanup request starts a
 non-interactive Claude Code call. On the original test laptop, typical cleanup
 latency was about 3-5 seconds after tuning.
+
+For lower latency, try `--claude-model haiku` or a full Haiku model name if your
+Claude Code account supports it. Keep `--claude-effort low` for cleanup.

@@ -14,8 +14,12 @@ The shim adds a small safety prompt and calls Claude Code with:
 - `--no-session-persistence`
 
 That keeps the cleanup call focused on text transformation instead of agentic
-computer use. This is still not a security boundary. Treat the localhost API as
-trusted local automation.
+computer use. Claude Code is also run from a neutral temporary working directory
+by default, so it does not load project or home-directory context for each
+cleanup request.
+
+This is still not a security boundary. Treat the localhost API as trusted local
+automation.
 
 If you find a security issue, open a private advisory or contact the maintainer
 directly rather than filing a public issue with exploit details.
