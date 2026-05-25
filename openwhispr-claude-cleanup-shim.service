@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenWhispr Claude cleanup shim
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__REPO_DIR__
+ExecStart=__REPO_DIR__/cleanup_shim.py --timeout 8 --claude-bin __CLAUDE_BIN__ --claude-model sonnet --claude-effort low
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
