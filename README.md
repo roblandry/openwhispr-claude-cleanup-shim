@@ -141,3 +141,6 @@ latency was about 3-5 seconds after tuning.
 
 For lower latency, try `--claude-model haiku` or a full Haiku model name if your
 Claude Code account supports it. Keep `--claude-effort low` for cleanup.
+
+See [TODO.md](TODO.md) for possible future work and intentionally out-of-scope
+ideas.
